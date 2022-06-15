@@ -1,17 +1,12 @@
 package com.example.ScheduleDelivery.utils;
 
 import com.example.ScheduleDelivery.model.TimeSlot;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
-
-import java.io.*;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
-import java.util.List;
 
 public class Utils {
 
@@ -48,7 +43,6 @@ public class Utils {
 
     public static TimeSlot makeTimeSlotAvailableAgain(TimeSlot timeSlot) {
 
-
         timeSlot.setCapacity(timeSlot.getCapacity() - 1);
 
         if (!timeSlot.getIsAvailable()) {
@@ -57,6 +51,4 @@ public class Utils {
         }
         return timeSlot;
     }
-
-
 }

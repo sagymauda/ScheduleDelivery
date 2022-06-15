@@ -70,8 +70,6 @@ public class DeliveryController {
         return deliveryService.retrieveWeeklyDeliveries();
 
     }
-
-
 }
 
 

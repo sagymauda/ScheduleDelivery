@@ -8,9 +8,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BaseDeliveryService {
 
-protected final AddressRepository addressRepository;
-protected final TimeSlotRepository timeSlotRepository;
-protected final DeliveryRepository deliveryRepository;
+    protected final AddressRepository addressRepository;
+    protected final TimeSlotRepository timeSlotRepository;
+    protected final DeliveryRepository deliveryRepository;
 
 
 }

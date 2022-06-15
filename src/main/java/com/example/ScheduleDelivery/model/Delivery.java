@@ -2,6 +2,7 @@ package com.example.ScheduleDelivery.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Data

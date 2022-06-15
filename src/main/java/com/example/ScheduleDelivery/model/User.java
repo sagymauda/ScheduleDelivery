@@ -2,6 +2,7 @@ package com.example.ScheduleDelivery.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -18,8 +19,8 @@ public class User {
 
     private String phoneNumber;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="users_id", referencedColumnName="id")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "users_id", referencedColumnName = "id")
     private Set<Address> address;
 
 }
