@@ -1,6 +1,7 @@
 package com.example.ScheduleDelivery.service.base;
 
 import com.example.ScheduleDelivery.repository.AddressRepository;
+import com.example.ScheduleDelivery.repository.DeliveryRepository;
 import com.example.ScheduleDelivery.repository.TimeSlotRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -9,6 +10,7 @@ public class BaseDeliveryService {
 
 protected final AddressRepository addressRepository;
 protected final TimeSlotRepository timeSlotRepository;
+protected final DeliveryRepository deliveryRepository;
 
 
 }
