@@ -108,15 +108,13 @@ public class DeliveryServiceImpl extends BaseDeliveryService implements Delivery
 
     @Override
     public List<Delivery> retrieveAllTodayDeliveries() {
-        List<Delivery> deliveries = deliveryRepository.findAll();
-        Date date = Utils.createCurrentDate();
-        return deliveries.stream().filter(delivery -> Utils.isSameDayUsingInstant(delivery.getTimeSlot().getStartTime(), date))
-                .collect(Collectors.toList());
+        return deliveryRepository.findTodayDeliveries();
+
     }
 
     @Override
     public List<Delivery> retrieveWeeklyDeliveries() {
-        return null;
+        return deliveryRepository.findThisWeekDeliveries();
     }
 
     @SneakyThrows

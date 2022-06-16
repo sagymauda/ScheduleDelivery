@@ -1,12 +1,5 @@
 [
   {
-    "startTime": "2022-06-15 13:23:44",
-    "endTime": "2022-06-15 13:23:44",
-    "supportedCity": "telaviv",
-    "isAvailable": "true",
-    "capacity": 0
-  },
-  {
     "startTime": "2022-06-16 13:23:44",
     "endTime": "2022-06-16 13:23:44",
     "supportedCity": "telaviv",
@@ -14,29 +7,36 @@
     "capacity": 0
   },
   {
-    "startTime": "2022-06-15 13:23:44",
-    "endTime": "2022-06-15 13:23:44",
+    "startTime": "2022-06-17 13:23:44",
+    "endTime": "2022-06-17 13:23:44",
     "supportedCity": "telaviv",
     "isAvailable": "true",
     "capacity": 0
   },
   {
-    "startTime": "2022-06-15 13:23:44",
-    "endTime": "2022-06-15 13:23:44",
+    "startTime": "2022-06-18 13:23:44",
+    "endTime": "2022-06-18 13:23:44",
+    "supportedCity": "telaviv",
+    "isAvailable": "true",
+    "capacity": 0
+  },
+  {
+    "startTime": "2022-06-19 13:23:44",
+    "endTime": "2022-06-19 13:23:44",
     "supportedCity": "holon",
     "isAvailable": "true",
     "capacity": 0
   },
   {
-    "startTime": "2022-06-15 13:23:44",
-    "endTime": "2022-06-15 13:23:44",
+    "startTime": "2022-06-16 13:23:44",
+    "endTime": "2022-06-16 13:23:44",
     "supportedCity": "holon",
     "isAvailable": "true",
     "capacity": 0
   },
   {
-    "startTime": "2022-06-15 13:23:44",
-    "endTime": "2022-06-15 13:23:44",
+    "startTime": "2022-06-16 13:23:44",
+    "endTime": "2022-06-16 13:23:44",
     "supportedCity": "holon",
     "isAvailable": "true",
     "capacity": 0

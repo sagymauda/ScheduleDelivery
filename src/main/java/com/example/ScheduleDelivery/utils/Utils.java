@@ -36,8 +36,9 @@ public class Utils {
 
     @SneakyThrows
     public static Date createCurrentDate() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date date = new Date();
+        System.out.print(formatter.parse(formatter.format(date)));
         return formatter.parse(formatter.format(date));
     }
 
