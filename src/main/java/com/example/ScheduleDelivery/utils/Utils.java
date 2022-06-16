@@ -34,14 +34,6 @@ public class Utils {
         return instant1.equals(instant2);
     }
 
-    @SneakyThrows
-    public static Date createCurrentDate() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        Date date = new Date();
-        System.out.print(formatter.parse(formatter.format(date)));
-        return formatter.parse(formatter.format(date));
-    }
-
     public static TimeSlot makeTimeSlotAvailableAgain(TimeSlot timeSlot) {
 
         timeSlot.setCapacity(timeSlot.getCapacity() - 1);
