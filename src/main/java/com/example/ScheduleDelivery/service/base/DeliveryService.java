@@ -1,26 +1,23 @@
 package com.example.ScheduleDelivery.service.base;
 
-import com.example.ScheduleDelivery.model.Address;
-import com.example.ScheduleDelivery.model.Delivery;
-import com.example.ScheduleDelivery.model.TimeSlot;
+import com.example.ScheduleDelivery.dto.AddressDto;
+import com.example.ScheduleDelivery.dto.DeliveryDto;
 
-import java.util.List;
 import java.util.Set;
 
 public interface DeliveryService {
 
     void resolveAddress(String address);
 
-    Set<TimeSlot> getTimeSlotsForAddress(Address address);
+    String bookDelivery(Long timeSlotId, AddressDto addressDto );
 
-    String bookDelivery(Long timeSlotId, Address address);
+    String markAsComplete(Long deliverId);
 
-    String markAsCompleteDelivery(Long deliverId);
+    String cancel(Long deliveryId);
 
-    String cancelDelivery(Long deliveryId);
+    Set<DeliveryDto> retrieveAllToday();
 
-    List<Delivery> retrieveAllTodayDeliveries();
-
-    List<Delivery> retrieveWeeklyDeliveries();
+    Set<DeliveryDto> retrieveAllWeekly();
 
 }
+

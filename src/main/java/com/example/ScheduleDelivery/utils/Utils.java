@@ -1,12 +1,6 @@
 package com.example.ScheduleDelivery.utils;
 
 import com.example.ScheduleDelivery.model.TimeSlot;
-import lombok.SneakyThrows;
-
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
 
 public class Utils {
 
@@ -24,14 +18,6 @@ public class Utils {
             return true;
 
         return false;
-    }
-
-    public static boolean isSameDayUsingInstant(Date date1, Date date2) {
-        Instant instant1 = date1.toInstant()
-                .truncatedTo(ChronoUnit.DAYS);
-        Instant instant2 = date2.toInstant()
-                .truncatedTo(ChronoUnit.DAYS);
-        return instant1.equals(instant2);
     }
 
     public static TimeSlot makeTimeSlotAvailableAgain(TimeSlot timeSlot) {

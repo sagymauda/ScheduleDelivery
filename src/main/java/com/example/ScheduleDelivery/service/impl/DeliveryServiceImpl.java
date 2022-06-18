@@ -1,31 +1,47 @@
 package com.example.ScheduleDelivery.service.impl;
 
-import com.example.ScheduleDelivery.model.*;
+import com.example.ScheduleDelivery.dto.AddressDto;
+import com.example.ScheduleDelivery.dto.DeliveryDto;
+import com.example.ScheduleDelivery.mappar.AddressMapper;
+import com.example.ScheduleDelivery.mappar.DeliveryMapper;
+import com.example.ScheduleDelivery.model.Address;
+import com.example.ScheduleDelivery.model.Delivery;
+import com.example.ScheduleDelivery.model.Status;
+import com.example.ScheduleDelivery.model.TimeSlot;
 import com.example.ScheduleDelivery.repository.AddressRepository;
 import com.example.ScheduleDelivery.repository.DeliveryRepository;
 import com.example.ScheduleDelivery.repository.TimeSlotRepository;
-import com.example.ScheduleDelivery.service.base.BaseDeliveryService;
 import com.example.ScheduleDelivery.service.base.DeliveryService;
 import com.example.ScheduleDelivery.utils.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class DeliveryServiceImpl extends BaseDeliveryService implements DeliveryService {
+public class DeliveryServiceImpl implements DeliveryService {
 
-    public DeliveryServiceImpl(AddressRepository addressRepository, TimeSlotRepository timeSlotRepository, DeliveryRepository deliveryRepository) {
-        super(addressRepository, timeSlotRepository, deliveryRepository);
-    }
+    @Autowired
+    AddressRepository addressRepository;
+
+    @Autowired
+    TimeSlotRepository timeSlotRepository;
+
+    @Autowired
+    DeliveryRepository deliveryRepository;
+
+    @Autowired
+    AddressMapper addressMapper;
+
+    @Autowired
+    DeliveryMapper deliveryMapper;
+
 
     @Transactional
     public void resolveAddress(String address) {
@@ -33,16 +49,11 @@ public class DeliveryServiceImpl extends BaseDeliveryService implements Delivery
         addressRepository.save(resolvedAddress);
     }
 
-    @Override
-    public Set<TimeSlot> getTimeSlotsForAddress(Address address) {
-        String city = address.getCity();
-        return timeSlotRepository.getAllByType(city, true);
-    }
 
     @Override
     @Transactional
-    public String bookDelivery(Long timeSlotId, Address address) {
-
+    public String bookDelivery(Long timeSlotId, AddressDto addressDto) {
+        Address address = addressMapper.addressDtoToAddress(addressDto);
         Optional<TimeSlot> timeSlotToBook = timeSlotRepository.findById(timeSlotId);
 
         if (timeSlotToBook.isEmpty())
@@ -72,7 +83,7 @@ public class DeliveryServiceImpl extends BaseDeliveryService implements Delivery
 
     @Transactional
     @Override
-    public String markAsCompleteDelivery(Long deliveryId) {
+    public String markAsComplete(Long deliveryId) {
         Optional<Delivery> delivery = deliveryRepository.findById(deliveryId);
 
         if (delivery.isEmpty())
@@ -86,7 +97,7 @@ public class DeliveryServiceImpl extends BaseDeliveryService implements Delivery
 
     @Override
     @Transactional
-    public String cancelDelivery(Long deliveryId) {
+    public String cancel(Long deliveryId) {
 
         //i need to remove it from the Db
         Optional<Delivery> deliveryToCancel = deliveryRepository.findById(deliveryId);
@@ -107,14 +118,17 @@ public class DeliveryServiceImpl extends BaseDeliveryService implements Delivery
     }
 
     @Override
-    public List<Delivery> retrieveAllTodayDeliveries() {
-        return deliveryRepository.findTodayDeliveries();
+    public Set<DeliveryDto> retrieveAllToday() {
+        Set<Delivery> deliveries = deliveryRepository.findTodayDeliveries();
+        return deliveryMapper.mapDeliveryToDeliveryDto(deliveries);
 
     }
 
     @Override
-    public List<Delivery> retrieveWeeklyDeliveries() {
-        return deliveryRepository.findThisWeekDeliveries();
+    public Set<DeliveryDto> retrieveAllWeekly() {
+        Set<Delivery> deliveries = deliveryRepository.findThisWeekDeliveries();
+        return deliveryMapper.mapDeliveryToDeliveryDto(deliveries);
+
     }
 
     @SneakyThrows
